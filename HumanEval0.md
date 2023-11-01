@@ -1,4 +1,6 @@
-Refute check of HumanEval_0:
+# Refute check of HumanEval_0:
+
+
 For this , we pass a primary base solution which we intend to be the most efficient solution and try to compare the code generations with this.
 We evaluate the comparisions based on :
 >Readability
@@ -14,7 +16,7 @@ We evaluate the comparisions based on :
 We perform this by prompting the two solutions to our primary model and ask it compare according to these benchmarks.
 
 
-Test Doctstring:
+**Test Doctstring:**
 ```
 def has_close_elements(numbers: List[float], threshold: float) -> bool:
     """ Check if in given list of numbers, are any two numbers closer to each other than
@@ -26,7 +28,10 @@ def has_close_elements(numbers: List[float], threshold: float) -> bool:
     """
 ```
 
-Base Solution:
+
+We obtain that the docstring is not well defined. If we take into account some assumptions , we arrive at the following base solution against which the code generations can be compared.
+
+**Base Solution:**
 ```
 from typing import List
 def has_close_elements(numbers: List[float], threshold: float) -> bool:
@@ -45,7 +50,7 @@ def has_close_elements(numbers: List[float], threshold: float) -> bool:
 ```
 
 
-Results:
+## Results:
 
 >> 1.py :
 >> 
@@ -58,6 +63,8 @@ Efficiency: Time complexity is O(n^2) due to nested loops, less efficient than t
 Space Complexity: The solution uses a constant amount of extra space, but the list comprehension increases temporary space usage.
 
 Stability: The solution is stable and correctly avoids counting pairs of identical elements.
+
+---
 
 
 >> 2.py :
@@ -72,6 +79,7 @@ Space Complexity: The space complexity is O(1) as it uses a constant amount of e
 
 Stability: The solution is stable and correctly checks for closeness using the minimum absolute difference.
 
+---
 
 >> 5.py : 
 >>
@@ -85,6 +93,7 @@ Space Complexity: The space complexity is O(1) as it uses a constant amount of e
 
 Stability: The solution is stable and correctly checks for closeness using the minimum absolute difference.
 
+---
 
 >> 8.py :
 >>
@@ -98,6 +107,7 @@ Space Complexity: The space complexity is O(1) as it uses a constant amount of e
 
 Stability: The solution is stable and correctly checks for closeness using the sorted order.
 
+---
 
 
 
